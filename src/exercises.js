@@ -54,20 +54,20 @@ function max(number) {
   if (!number || number.length === 0) {
     return undefined;
   }
-  if (number.length % 2 === 0 || number.length < 3 ){
+  if (number.length % 2 === 0 || number.length < 3 ) {
     return undefined;
   }
-  if (number.some(isNaN)){
+  if (number.some(isNaN)) {
     return undefined;
   }
-  else{
-    var first_element = number[0];
-    var middle_element = number[Math.floor(number.length/2)];
-    var last_element = number[number.length-1];
+  else {
+    var firstValue = number[0];
+    var middleValue = number[Math.floor(number.length/2)];
+    var lastValue = number[number.length-1];
     var array = [];
     var largest = Number(Math.max.apply(null, array));
-    array.push(first_element, middle_element, last_element);
-    return  Number(Math.max.apply(null, array));
+    array.push(firstValue, middleValue, lastValue);
+    return Number(Math.max.apply(null, array));
   }
 }
 
@@ -77,12 +77,10 @@ function middle(values) {
   if (!values || values.length % 2 === 0 || values.length < 3) {
   return [];
 } else {
-  let newA = [];
-
+  let newArray = [];
   let middle = Math.floor(values.length / 2);
-  newA.push(values[middle - 1], values[middle], values[middle + 1]);
-
-  return newA;
+  newArray.push(values[middle - 1], values[middle], values[middle + 1]);
+  return newArray;
   }
 }
 
@@ -99,10 +97,10 @@ function increasing(numbers) {
     let first = numbers[i];
     let second = numbers[i + 1];
     let third = numbers[i + 2];
-    let indexsecond = Number.isInteger(second);
-    let indexthird = Number.isInteger(third);
+    let secondIndex = Number.isInteger(second);
+    let thirdIndex = Number.isInteger(third);
 
-    if (indexsecond === false || indexthird === false) {
+    if (secondIndex === false || thirdIndex === false) {
       return false;
     }
     if (first < second && second < third) {
@@ -210,10 +208,10 @@ function consecutive(numbers) {
 }
 
 function balance(numbers) {
-  var count = 0;
+    var count = 0;
     var size = 0;
-    var sum1 = 0;
-    var sum2 = 0;
+    var firstSum = 0;
+    var secondSum = 0;
 
     if (!numbers || numbers.length < 2) {
       return false;
@@ -229,15 +227,15 @@ function balance(numbers) {
       }
     }
     for (x = numbers.length; x > -1; x--) {
-      sum1 = 0
-      sum2 = 0
-      for(y = numbers.length - x; y > -1; y--) {
-        sum1 = sum1 + numbers[y]
+      firstSum = 0
+      secondSum = 0
+      for (y = numbers.length - x; y > -1; y--) {
+        firstSum = firstSum + numbers[y]
       }
       for(a = numbers.length - 1; a > numbers.length - x; a--) {
-        sum2 = sum2 + numbers[a]
+        secondSum = secondSum + numbers[a]
       }
-      if (sum2 == sum1) {
+      if (secondSum == firstSum) {
         count = 1
         return true;
       }
@@ -257,19 +255,19 @@ function clumps(values) {
     return -1;
   }
   else {
-     for (let w = 0; w < values.length - 1; w++) {
-         let test2 = w + 1;
-         let test1 = w;
+     for (let i = 0;i < values.length - 1;i++) {
+         let test2 =i + 1;
+         let test1 =i;
          value = values[test1];
          sameValues = values[test2];
          if (value === sameValues) {
-             while (value === sameValues) {
+            while (value === sameValues) {
                  value = values[test1++];
                  sameValues = values[test2++];
               }
              clump++;
              clumpFinalIndex = test1 - 1;
-             w = clumpFinalIndex;
+            i = clumpFinalIndex;
           }
        }
     return clump;
